@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
+import django_heroku
 from pathlib import Path
 
 
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-85ax+(acp$k1kn$+7dc@ox^@-(1=$)rj409d$unc(=5n7cj0!y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lmchp.herokuapp.com']
 
 
 # Application definition
@@ -85,10 +87,10 @@ WSGI_APPLICATION = 'cmm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lmc',
-        'USER': 'eliemboyo',
-        'PASSWORD': 'elliot1989',
-        'HOST': 'localhost',
+        'NAME': 'dd7bm6qus9olif',
+        'USER': 'plmuxaowlzhfbe',
+        'PASSWORD': 'cfeaf317c2f1a95ded03b5197541463279939815af64ce348cf03c0c98f0ce9b',
+        'HOST': 'ec2-52-3-60-53.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -117,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr'
 
 TIME_ZONE = 'UTC'
 
@@ -129,7 +131,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
